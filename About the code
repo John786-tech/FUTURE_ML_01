@@ -1,0 +1,105 @@
+Project Title
+Rossmann Store Sales Forecasting using Facebook Prophet
+
+Project Overview
+This project implements a time-series forecasting model to predict total daily sales for Rossmann drug stores. Using historical sales data, the script aggregates daily performance across all stores and employs Facebook Prophet to generate a 30-day future sales forecast. The solution includes data visualization, model component analysis (seasonality), and performance evaluation using error metrics.
+
+Tech Stack
+Language: Python
+
+Libraries:
+
+prophet: For time-series forecasting.
+
+pandas & numpy: For data manipulation and aggregation.
+
+matplotlib: For plotting sales trends and forecast results.
+
+sklearn: For calculating performance metrics (MAE, RMSE).
+
+kagglehub: For automatic dataset downloading.
+
+Dataset
+The project uses the Rossmann Store Sales dataset sourced via Kaggle.
+
+Source: Rossmann Store Sales on Kaggle
+
+Preprocessing: The script aggregates the Sales column by Date to analyze the total company-wide revenue trend, rather than individual store performance.
+
+Implementation Steps
+Environment Setup:
+
+Suppresses unnecessary warnings and logging from Prophet/CmdStanPy for cleaner output.
+
+Downloads the dataset directly using kagglehub.
+
+Data Processing:
+
+Loads train.csv.
+
+Converts the Date column to datetime objects.
+
+Aggregates data to calculate Total Daily Sales (ds = Date, y = Sales) to prepare it for the Prophet model.
+
+Exploratory Analysis:
+
+Plots the historical sales trend to visualize patterns, seasonality, and outliers before training.
+
+Model Training:
+
+Initializes a Prophet model with:
+
+daily_seasonality=True
+
+weekly_seasonality=True
+
+yearly_seasonality=True
+
+Fits the model on the historical daily aggregated data.
+
+Forecasting:
+
+Generates a placeholder dataframe for the next 30 days.
+
+Predicts future sales (yhat) along with uncertainty intervals (yhat_lower, yhat_upper).
+
+Evaluation:
+
+Visualizes the forecast and decomposes the model components (trend, weekly seasonality, yearly seasonality).
+
+Calculates error metrics on the training data:
+
+MAE (Mean Absolute Error): Average absolute difference between actual and predicted sales.
+
+RMSE (Root Mean Squared Error): Square root of the average squared errors (penalizes large errors).
+
+Key Outputs
+The script generates the following insights:
+
+Visualizations:
+
+Historical Sales Trend Plot.
+
+30-Day Forecast Plot (with confidence intervals).
+
+Component Analysis (Trend vs. Weekly/Yearly Seasonality).
+
+Console Metrics:
+
+Model Accuracy (MAE & RMSE).
+
+Sales Forecast Summary:
+
+Last Recorded Sales figure.
+
+Forecast for the immediate next day.
+
+Average forecasted sales for the next 30 days.
+
+How to Run
+Install dependencies:
+
+Bash
+
+pip install pandas numpy matplotlib prophet scikit-learn kagglehub
+Run the script. The dataset will be downloaded automatically to your local cache.
